@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block new_product %}
+{% endblock %}
+
+{% block content%}
+    <div class="container">
+        <h3 class="mb-3">Добавьте товар</h3>
+
+        <form action="{% url 'new_product' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Наименование</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Описание</label>
+                <textarea class="form-control" id="description" name="description"></textarea>
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default select example" name="category" required>
+                    <option value="" disabled selected>Выберите категорию</option>
+                    {% for category in categories %}
+                        <option value="{{ category.pk }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Стоимость</label>
+                <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Изображение</label>
+                <input type="text" class="form-control" id="image" name="image" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+{% endblock %}
