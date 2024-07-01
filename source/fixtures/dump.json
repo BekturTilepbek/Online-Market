@@ -1,0 +1,118 @@
+[
+{
+  "model": "webapp.category",
+  "pk": 1,
+  "fields": {
+    "name": "Молочная продукция",
+    "description": "Пищевые продукты, вырабатываемые из молока. Переработка молока в пищевые продукты производится для придания особых вкусовых качеств и повышения устойчивости к хранению."
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 2,
+  "fields": {
+    "name": "Хлебобулочная продукция",
+    "description": "Пищевые продукты, получаемые методом выпекания из теста, разрыхлённого дрожжами или закваской. К ним относятся хлеб, булочные изделия, изделия пониженной влажности, пироги, пирожки, пончики."
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 3,
+  "fields": {
+    "name": "Мясные изделия",
+    "description": "Обеспечивает организм полноценным белком (незаменимыми аминокислотами), витаминами А, D, В1, В2, В6, РР, В12, биодоступным железом, селеном, цинком. С мясопродуктами в организм поступает значительное количество фосфора, калия и натрия.\r\n\r\nПитательная ценность мяса обусловлена входящими в его состав полноценными белками, содержащими до 20% аминокислот, в том числе незаменимые аминокислоты (валин, лейцин, изолейцин, лизин,  метионин, треонин, триптофан, фенилаланин), и липидами, в состав которых входят незаменимые полиненасыщенные жирные кислоты."
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 4,
+  "fields": {
+    "name": "Газированные напитки",
+    "description": null
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "Колбаса",
+    "description": "Пищевой продукт; классообразующий тип колбасных изделий, представляющий собой мясной фарш в продолговатой оболочке.",
+    "category": 3,
+    "created_at": "2024-07-01T09:27:24.555Z",
+    "price": "300.00",
+    "image": "https://kmpp.ru/upload/iblock/c0d/c0d114c1348a6ddf2b78b8e48618f81b.jpg"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "Кефир",
+    "description": "Разновидность кисломолочного напитка, получаемая из цельного или обезжиренного коровьего молока путём кисломолочного и спиртового брожения с применением кефирных «грибков», состоящих из молочнокислых стрептококков и палочек, уксуснокислых бактерий и дрожжей.",
+    "category": 1,
+    "created_at": "2024-07-01T09:28:21.673Z",
+    "price": "500.00",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTapfd6Fe4zOfpxBhp8zQg719ZkUpVKNN_wDg&s"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "Батон",
+    "description": "Распространённый вид булочных изделий наряду с плетёными изделиями, булками, сайками и булочной мелочью.",
+    "category": 2,
+    "created_at": "2024-07-01T09:29:40.345Z",
+    "price": "150.00",
+    "image": "https://img.vkusvill.ru/pim/images/site_LargeWebP/e9175f3f-abcc-46f9-81e3-25d0e8e77a68.webp?1705453825.0355"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "Стейк",
+    "description": null,
+    "category": 3,
+    "created_at": "2024-07-01T10:57:57.140Z",
+    "price": "500.00",
+    "image": "https://primebeef.ru/images/cms/data/primebeefdenversteak.png"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 5,
+  "fields": {
+    "name": "Круассан",
+    "description": null,
+    "category": 2,
+    "created_at": "2024-07-01T11:00:33.101Z",
+    "price": "250.00",
+    "image": "https://brioche.by/sites/default/files/styles/prodteaser/public/product/210728_BRIOCHE0580.jpg?itok=ut_2EQr1"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 6,
+  "fields": {
+    "name": "Coca-Cola",
+    "description": null,
+    "category": 4,
+    "created_at": "2024-07-01T11:20:35.890Z",
+    "price": "90.00",
+    "image": "https://www.coca-cola.com/content/dam/onexp/by/be/brands/coca-cola/by_coca-cola_prod_classic_750x750_v2.jpg"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 7,
+  "fields": {
+    "name": "Fanta",
+    "description": null,
+    "category": 4,
+    "created_at": "2024-07-01T11:27:25.670Z",
+    "price": "100.00",
+    "image": "https://www.coca-cola.com/content/dam/onexp/gb/en/brands/fanta/Product-Information-fanta-orange.jpg"
+  }
+}
+]
