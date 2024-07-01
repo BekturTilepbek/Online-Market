@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from webapp.models import Product
+
 
 def index(request):
-    return render(request, 'index.html')
+    products = Product.objects.all()
+    return render(request, 'index.html', context={'products': products})

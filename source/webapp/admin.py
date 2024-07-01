@@ -10,7 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'name']
     list_filter = ['category']
     search_fields = ['name']
-    fields = ['name', 'description', 'category', 'created_at', 'price']
+    fields = ['name', 'description', 'category', 'price', 'image']
 
 
 admin.site.register(Product, ProductAdmin)
