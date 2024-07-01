@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="product d-flex">
+            <div class="image">
+                <img src="{{ product.image }}" alt="Изображение товара" style="width: 300px; height: auto;">
+            </div>
+
+            <div class="stats ms-4">
+                <h1>{{ product.name }}</h1>
+                <h2>{{ product.category.name }}</h2>
+                <p>Price: {{ product.price }}</p>
+                <p style="width: 50%;">{{ product.description }}</p>
+                <p>{{ product.created_at }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
