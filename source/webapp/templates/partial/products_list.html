@@ -1,0 +1,22 @@
+<h3 class="mb-3">{{ title }}</h3>
+
+<div class="cards d-flex justify-content-around flex-wrap">
+    {% for product in products %}
+        {% if product.remain > 1 or product.remain == 1 %}
+            <div class="card mt-4" style="width: 18rem;">
+                <img src="{{ product.image }}" class="card-img-top" alt="..."   >
+                <div class="card-body d-flex flex-column h-100">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary"><a href="{% url 'category_products' product.category.slug %}">{{ product.category.name }}</a></h6>
+                    <p class="card-text">Стоимость: {{ product.price }} с.</p>
+                    
+                    <div class="links d-flex mt-auto justify-content-between">
+                        <a href="{% url 'detail_product' product.pk %}">Подробнее</a>
+                        <a href="{% url 'update_product' product.pk %}">Изменить</a>
+                        <a href="{% url 'delete_product' product.pk %}">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

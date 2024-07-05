@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block categories %}
+{% endblock %}
+
+{% block content %}
+    <h3 class="mb-3">Категории</h3>
+
+    {% for category in categories %}
+        <p class="h5"><a href="{% url 'category_products' category.slug %}">{{ category.name }}</a></p>
+    {% endfor %}
+{% endblock %}

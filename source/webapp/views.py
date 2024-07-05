@@ -1,14 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from webapp.forms import ProductForm, CategoryForm
-from webapp.models import Product
+from webapp.models import Product, Category
 
 
-def index(request):
+def index(request, slug=None):
     if request.GET:
         products = Product.objects.filter(name=request.GET.get('search'))
         return render(request, 'index.html', {'products': products})
-    print(request.GET.get('search_value'))
+
+    if slug is not None:
+        category = get_object_or_404(Category, slug=slug)
+        products = Product.objects.filter(category=category)
+        products = products.order_by('name')
+        return render(request, 'index.html', context={'products': products, 'category': category})
+
     products = Product.objects.order_by('category', 'name')
     return render(request, 'index.html', context={'products': products})
 
@@ -52,6 +58,12 @@ def delete_product(request, pk):
     else:
         product.delete()
         return redirect('products')
+
+
+def categories_index(request):
+    if request.method == "GET":
+        categories = Category.objects.all()
+        return render(request, 'categories.html', context={'categories': categories})
 
 
 def create_category(request):

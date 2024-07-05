@@ -7,7 +7,7 @@
 
         <div class="stats ms-4">
             <h1>{{ product.name }}</h1>
-            <p>{{ product.category.name }}</p>
+            <p><a href="{% url 'category_products' product.category.slug %}">{{ product.category.name }}</a></p>
             <h4>Стоимость: {{ product.price }} с.</h4>
             {% if product.description %}
                 <p>{{ product.description }}</p>

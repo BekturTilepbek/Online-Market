@@ -23,7 +23,11 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'products' %}">Продукты</a>
                         </li>
                     {% endblock %}
-
+                    {% block categories %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'categories' %}">Категории</a>
+                        </li>
+                    {% endblock %}
                     {% block new_product %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'new_product' %}">Добавить товар</a>
