@@ -2,22 +2,9 @@
 {% block new_category %}
 {% endblock %}
 
-{% block content%}
-    <div class="container">
-        <h3 class="mb-3">Добавьте категорию</h3>
-
-        <form action="{% url 'new_category' %}" method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="name" class="form-label">Наименование</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Описание</label>
-                <textarea class="form-control" id="description" name="description"></textarea>
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Добавить</button>
-        </form>
-    </div>
+{% block content %}
+    <h3 class="mb-3">Добавить категорию</h3>
+    <form action="" method="POST">
+        {% include 'partial/category_from.html' with button_text='Добавить' %}
+    </form>
 {% endblock %}
