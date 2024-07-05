@@ -17,7 +17,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav">
                     {% block products %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'products' %}">Продукты</a>
@@ -37,6 +37,11 @@
                     {% endblock %}
                 </ul>
             </div>
+
+            <form class="d-flex" role="search" action="{% url 'products' %}" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Название продукта" aria-label="Search" name="search">
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
+            </form>
         </div>
     </nav>
     

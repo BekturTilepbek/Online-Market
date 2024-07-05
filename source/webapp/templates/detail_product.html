@@ -13,6 +13,9 @@
                 <p>{{ product.description }}</p>
             {% endif %}
             <p>Добавлено: {{ product.created_at|date:"d/m/Y h:m" }}</p>
+            <p>Остаток: {{ product.remain }}</p>
+            <a href="{% url 'update_product' product.pk %}" class="btn btn-primary">Изменить</a>
+            <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger">Удалить</a>
         </div>
     </div>
 {% endblock %}
