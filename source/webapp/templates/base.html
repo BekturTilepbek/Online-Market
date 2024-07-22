@@ -30,22 +30,17 @@
                     {% endblock %}
                     {% block new_product %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'new_product' %}">Добавить товар</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'create_product' %}">Добавить товар</a>
                         </li>
                     {% endblock %}
 
                     {% block new_category %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'new_category' %}">Добавить категорию</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'create_category' %}">Добавить категорию</a>
                         </li>
                     {% endblock %}
                 </ul>
             </div>
-
-            <form class="d-flex" role="search" action="{% url 'products' %}" method="GET">
-                <input class="form-control me-2" type="search" placeholder="Название продукта" aria-label="Search" name="search">
-                <button class="btn btn-outline-success" type="submit">Поиск</button>
-            </form>
         </div>
     </nav>
     

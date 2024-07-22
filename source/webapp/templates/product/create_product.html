@@ -5,6 +5,6 @@
 {% block content %}
     <h3 class="mb-3">Добавить продукт</h3>
     <form action="" method="POST">
-        {% include 'partial/product_form.html' %}
+        {% include 'partial/product_form.html' with button_text='Добавить' %}
     </form>
 {% endblock %}

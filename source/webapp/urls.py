@@ -1,16 +1,17 @@
 from django.urls import path
 
-from webapp.views import (index, create_product, read_product, update_product, delete_product, categories_index,
-                          create_category)
+from webapp.views import CategoryListView, CreateCategoryView
+from webapp.views import ProductListView, CreateProductView, ProductDetailView, UpdateProductView, DeleteProductView
+
 
 urlpatterns = [
-    path('', index, name='products'),
-    path('products/', index, name='products'),
-    path('products/<int:pk>/', read_product, name='detail_product'),
-    path('products/add/', create_product, name='new_product'),
-    path('products/<int:pk>/update', update_product, name='update_product'),
-    path('products/<int:pk>/delete', delete_product, name='delete_product'),
-    path('categories/', categories_index, name='categories'),
-    path('categories/add/', create_category, name='new_category'),
-    path('categories/<slug:slug>/', index, name='category_products')
+    path('', ProductListView.as_view(), name='products'),
+    path('products/', ProductListView.as_view(), name='products'),
+    path('products/add/', CreateProductView.as_view(), name='create_product'),
+    path('products/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
+    path('products/<int:pk>/update', UpdateProductView.as_view(), name='update_product'),
+    path('products/<int:pk>/delete', DeleteProductView.as_view(), name='delete_product'),
+    path('categories/', CategoryListView.as_view(), name='categories'),
+    path('categories/add/', CreateCategoryView.as_view(), name='create_category'),
+    path('categories/<slug:slug>/', ProductListView.as_view(), name='category_products')
 ]

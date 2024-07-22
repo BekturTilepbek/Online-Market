@@ -97,11 +97,11 @@
   "pk": 4,
   "fields": {
     "name": "Стейк",
-    "description": null,
+    "description": "",
     "category": 3,
     "created_at": "2024-07-01T10:57:57.140Z",
     "price": "500.00",
-    "image": "https://primebeef.ru/images/cms/data/primebeefdenversteak.png",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5X21V7zUr8ihio6ZHmDHLhp-e3uRDV8UD_Q&s",
     "remain": 1
   }
 },

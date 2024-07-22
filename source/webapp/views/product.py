@@ -1,60 +1,89 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse, reverse_lazy
+from django.utils.http import urlencode
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
-from webapp.forms import ProductForm
+from webapp.forms import ProductForm, SearchForm
 from webapp.models import Product, Category
 
 
-def index(request, slug=None):
-    if request.GET:
-        products = Product.objects.filter(name=request.GET.get('search'))
-        return render(request, 'product/index.html', {'products': products})
+class ProductListView(ListView):
+    model = Product
+    template_name = 'product/products_list.html'
+    ordering = ['category', 'name']
+    context_object_name = 'products'
+    paginate_by = 5
 
-    if slug is not None:
-        category = get_object_or_404(Category, slug=slug)
-        products = Product.objects.filter(category=category)
-        products = products.order_by('name')
-        return render(request, 'product/index.html', context={'products': products, 'category': category})
+    def dispatch(self, request, *args, **kwargs):
+        self.form = self.get_form()
+        self.search_value = self.get_search_value()
+        return super().dispatch(request, *args, **kwargs)
 
-    products = Product.objects.order_by('category', 'name')
-    return render(request, 'product/index.html', context={'products': products})
+    def get_form(self):
+        return SearchForm(self.request.GET)
 
-
-def create_product(request):
-    if request.method == "GET":
-        form = ProductForm()
-        return render(request, 'product/new_product.html', context={'form':   form})
-    else:
-        form = ProductForm(data=request.POST)
+    def get_search_value(self):
+        form = self.form
         if form.is_valid():
-            product = form.save()
-            return redirect('detail_product', pk=product.pk)
-        else:
-            return render(request, 'product/new_product.html', context={'form': form})
+            return form.cleaned_data['search']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.search_value:
+            queryset = queryset.filter(
+                Q(name__icontains=self.search_value) | Q(category__name__icontains=self.search_value)
+            )
+        queryset = queryset.filter(remain__gt=0)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = self.form
+        if self.search_value:
+            context["search"] = urlencode({"search": self.search_value})
+            context["search_value"] = self.search_value
+        return context
 
 
-def read_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    return render(request, 'product/detail_product.html', context={'product': product})
+# def index(request, slug=None):
+#     if request.GET:
+#         products = Product.objects.filter(name=request.GET.get('search'))
+#         return render(request, 'product/products_list.html', {'products': products})
+#
+#     if slug is not None:
+#         category = get_object_or_404(Category, slug=slug)
+#         products = Product.objects.filter(category=category)
+#         products = products.order_by('name')
+#         return render(request, 'product/products_list.html', context={'products': products, 'category': category})
+#
+#     products = Product.objects.order_by('category', 'name')
+#     return render(request, 'product/products_list.html', context={'products': products})
 
 
-def update_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    if request.method == "GET":
-        form = ProductForm(instance=product)
-        return render(request, 'product/update_product.html', context={'form': form})
-    else:
-        form = ProductForm(data=request.POST, instance=product)
-        if form.is_valid():
-            form.save()
-            return redirect('detail_product', pk=product.pk)
-        else:
-            return render(request, 'product/update_product.html', context={'form': form})
+class CreateProductView(CreateView):
+    template_name = "product/create_product.html"
+    form_class = ProductForm
+
+    def get_success_url(self):
+        return reverse("product_detail", kwargs={"pk": self.object.pk})
 
 
-def delete_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    if request.method == "GET":
-        return render(request, 'product/delete_product.html', context={'product': product})
-    else:
-        product.delete()
-        return redirect('products')
+class ProductDetailView(DetailView):
+    template_name = "product/product_detail.html"
+    model = Product
+
+
+class UpdateProductView(UpdateView):
+    template_name = "product/update_product.html"
+    form_class = ProductForm
+    model = Product
+
+    def get_success_url(self):
+        return reverse("product_detail", kwargs={"pk": self.object.pk})
+
+
+class DeleteProductView(DeleteView):
+    template_name = "product/delete_product.html"
+    model = Product
+    success_url = reverse_lazy("products")
