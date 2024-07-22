@@ -1,8 +1,13 @@
 from django.contrib import admin
 
-from webapp.models import Category, Product
+from webapp.models import Category, Product, ProductInCart
 
-admin.site.register(Category)
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+    list_display_links = ['id', 'name']
+    search_fields = ['name']
+    fields = ['name', 'description']
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -13,4 +18,13 @@ class ProductAdmin(admin.ModelAdmin):
     fields = ['name', 'description', 'category', 'price', 'image']
 
 
+class ProductInCartAdmin(admin.ModelAdmin):
+    list_display = ['id', 'product', 'quantity']
+    list_display_links = ['id', 'product']
+    search_fields = ['product']
+    fields = ['product', 'quantity']
+
+
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(ProductInCart, ProductInCartAdmin)
