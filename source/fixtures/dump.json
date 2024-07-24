@@ -182,5 +182,29 @@
     "image": "https://www.colonialspirits.com/wp-content/uploads/2020/06/JackDanielsTennesseeWhiskey_750-scaled.jpg",
     "remain": 20
   }
+},
+{
+  "model": "webapp.productincart",
+  "pk": 1,
+  "fields": {
+    "product": 2,
+    "quantity": 1
+  }
+},
+{
+  "model": "webapp.productincart",
+  "pk": 2,
+  "fields": {
+    "product": 4,
+    "quantity": 1
+  }
+},
+{
+  "model": "webapp.productincart",
+  "pk": 3,
+  "fields": {
+    "product": 9,
+    "quantity": 2
+  }
 }
 ]

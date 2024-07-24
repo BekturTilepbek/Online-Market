@@ -34,10 +34,16 @@
                             </h6>
                             <p class="card-text">Стоимость: {{ product.price }} с.</p>
 
-                            <div class="links d-flex mt-auto justify-content-between">
-                                <a href="{% url 'product_detail' product.pk %}">Подробнее</a>
-                                <a href="{% url 'update_product' product.pk %}">Изменить</a>
-                                <a href="{% url 'delete_product' product.pk %}">Удалить</a>
+                            <div class="btn-group mt-auto" role="group">
+
+                                <a href="{% url 'add_product_in_cart' product.pk %}" class="btn btn-primary"><i
+                                        class="bi bi-cart-plus"></i></a>
+                                <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary"><i
+                                        class="bi bi-blockquote-right"></i></a>
+                                <a href="{% url 'update_product' product.pk %}"
+                                   class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                <a href="{% url 'delete_product' product.pk %}" class="btn btn-primary"><i
+                                        class="bi bi-trash3"></i></a>
                             </div>
                         </div>
                     </div>

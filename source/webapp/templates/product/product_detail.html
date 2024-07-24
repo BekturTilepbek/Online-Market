@@ -14,6 +14,7 @@
             {% endif %}
             <p>Добавлено: {{ product.created_at|date:"d/m/Y h:m" }}</p>
             <p>Остаток: {{ product.remain }}</p>
+            <a href="{% url 'add_product_in_cart' product.pk %}" class="btn btn-success">Добавить в корзину</a>
             <a href="{% url 'update_product' product.pk %}" class="btn btn-primary">Изменить</a>
             <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger">Удалить</a>
         </div>
