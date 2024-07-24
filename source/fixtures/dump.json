@@ -193,34 +193,34 @@
 },
 {
   "model": "webapp.productincart",
-  "pk": 3,
-  "fields": {
-    "product": 9,
-    "quantity": 2
-  }
-},
-{
-  "model": "webapp.productincart",
-  "pk": 8,
-  "fields": {
-    "product": 1,
-    "quantity": 1
-  }
-},
-{
-  "model": "webapp.productincart",
-  "pk": 9,
-  "fields": {
-    "product": 8,
-    "quantity": 1
-  }
-},
-{
-  "model": "webapp.productincart",
   "pk": 10,
   "fields": {
     "product": 15,
     "quantity": 1
+  }
+},
+{
+  "model": "webapp.productincart",
+  "pk": 11,
+  "fields": {
+    "product": 2,
+    "quantity": 1
+  }
+},
+{
+  "model": "webapp.productincart",
+  "pk": 12,
+  "fields": {
+    "product": 7,
+    "quantity": 1
+  }
+},
+{
+  "model": "webapp.productincart",
+  "pk": 13,
+  "fields": {
+    "product": 9,
+    "quantity": 5
   }
 }
 ]
