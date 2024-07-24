@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from webapp.models import Category, Product, ProductInCart
+from webapp.models import Category, Product, ProductInCart, Order, OrderProduct
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -25,6 +25,14 @@ class ProductInCartAdmin(admin.ModelAdmin):
     fields = ['product', 'quantity']
 
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'phone_number', 'address', 'created_at']
+    list_display_links = ['id']
+    search_fields = ['user']
+    fields = ['user', 'phone_number', 'address']
+
+
+admin.site.register(Order, OrderAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductInCart, ProductInCartAdmin)
