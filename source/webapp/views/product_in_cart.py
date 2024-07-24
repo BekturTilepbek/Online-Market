@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView, View
 
+from webapp.forms import OrderForm
 from webapp.models import Product, ProductInCart
 
 
@@ -15,6 +16,7 @@ class ProductsInCartListView(ListView):
         for product_in_cart in ProductInCart.objects.all():
             total += product_in_cart.product.price * product_in_cart.quantity
         context['total'] = total
+        context['form'] = OrderForm
         return context
 
 

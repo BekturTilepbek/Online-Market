@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -16,6 +16,7 @@ class ProductListView(ListView):
     paginate_by = 5
 
     def dispatch(self, request, *args, **kwargs):
+        self.slug = kwargs.get('slug')
         self.form = self.get_form()
         self.search_value = self.get_search_value()
         return super().dispatch(request, *args, **kwargs)
@@ -34,6 +35,10 @@ class ProductListView(ListView):
             queryset = queryset.filter(
                 Q(name__icontains=self.search_value) | Q(category__name__icontains=self.search_value)
             )
+
+        if self.slug:
+            category = get_object_or_404(Category, slug=self.slug)
+            queryset = queryset.filter(category=category)
         queryset = queryset.filter(remain__gt=0)
         return queryset
 

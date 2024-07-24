@@ -26,7 +26,8 @@ class ProductInCartAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'phone_number', 'address', 'created_at']
+    list_display = ['id', 'user', 'phone_number', 'created_at']
+    ordering = ['-created_at']
     list_display_links = ['id']
     search_fields = ['user']
     fields = ['user', 'phone_number', 'address']

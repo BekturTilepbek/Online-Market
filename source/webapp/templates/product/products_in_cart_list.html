@@ -47,5 +47,12 @@
         </tbody>
     </table>
 
-    <h3>Итого: {{ total }}</h3>
+    <h5>Итого: {{ total }}</h5>
+
+    <hr>
+    
+    <h3>Заказ</h3>
+    <form action="{% url 'create_order' %}" method="post" class="mb-3">
+        {% include 'partial/order_form.html' %}
+    </form>
 {% endblock %}

@@ -184,43 +184,159 @@
   }
 },
 {
-  "model": "webapp.productincart",
+  "model": "webapp.order",
   "pk": 2,
   "fields": {
-    "product": 4,
-    "quantity": 1
+    "user": "Bektur",
+    "phone_number": "+996 999 666 777",
+    "address": "Bishkek city",
+    "created_at": "2024-07-24T13:02:20.631Z"
   }
 },
 {
-  "model": "webapp.productincart",
+  "model": "webapp.order",
+  "pk": 3,
+  "fields": {
+    "user": "Almaz",
+    "phone_number": "+996 999 666 777",
+    "address": "Bishkek city",
+    "created_at": "2024-07-24T13:07:34.366Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 5,
+  "fields": {
+    "user": "Jhon",
+    "phone_number": "+996 999 666 777",
+    "address": "Bishkek city",
+    "created_at": "2024-07-24T13:11:51.333Z"
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 1,
+  "fields": {
+    "order": 2,
+    "product": 4,
+    "product_quantity": 1
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "product": 15,
+    "product_quantity": 1
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 3,
+  "fields": {
+    "order": 2,
+    "product": 2,
+    "product_quantity": 1
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 4,
+  "fields": {
+    "order": 2,
+    "product": 7,
+    "product_quantity": 1
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 5,
+  "fields": {
+    "order": 2,
+    "product": 9,
+    "product_quantity": 5
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 6,
+  "fields": {
+    "order": 3,
+    "product": 2,
+    "product_quantity": 1
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 7,
+  "fields": {
+    "order": 3,
+    "product": 3,
+    "product_quantity": 1
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 8,
+  "fields": {
+    "order": 3,
+    "product": 5,
+    "product_quantity": 1
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 9,
+  "fields": {
+    "order": 3,
+    "product": 8,
+    "product_quantity": 1
+  }
+},
+{
+  "model": "webapp.orderproduct",
   "pk": 10,
   "fields": {
-    "product": 15,
-    "quantity": 1
+    "order": 5,
+    "product": 6,
+    "product_quantity": 1
   }
 },
 {
-  "model": "webapp.productincart",
+  "model": "webapp.orderproduct",
   "pk": 11,
   "fields": {
-    "product": 2,
-    "quantity": 1
+    "order": 5,
+    "product": 15,
+    "product_quantity": 1
   }
 },
 {
-  "model": "webapp.productincart",
+  "model": "webapp.orderproduct",
   "pk": 12,
   "fields": {
+    "order": 5,
     "product": 7,
-    "quantity": 1
+    "product_quantity": 1
   }
 },
 {
-  "model": "webapp.productincart",
+  "model": "webapp.orderproduct",
   "pk": 13,
   "fields": {
+    "order": 5,
     "product": 9,
-    "quantity": 5
+    "product_quantity": 4
+  }
+},
+{
+  "model": "webapp.orderproduct",
+  "pk": 14,
+  "fields": {
+    "order": 5,
+    "product": 4,
+    "product_quantity": 1
   }
 }
 ]
