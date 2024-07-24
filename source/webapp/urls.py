@@ -2,7 +2,7 @@ from django.urls import path
 
 from webapp.views import CategoryListView, CreateCategoryView
 from webapp.views import ProductListView, CreateProductView, ProductDetailView, UpdateProductView, DeleteProductView
-from webapp.views import AddProductInCartView
+from webapp.views import AddProductInCartView, ProductsInCartListView, DeleteProductInCartView
 
 
 urlpatterns = [
@@ -15,5 +15,7 @@ urlpatterns = [
     path('categories/', CategoryListView.as_view(), name='categories'),
     path('categories/add/', CreateCategoryView.as_view(), name='create_category'),
     path('categories/<slug:slug>/', ProductListView.as_view(), name='category_products'),
-    path('cart/add/product/<int:pk>/', AddProductInCartView.as_view(), name='add_product_in_cart')
+    path('cart/add/product/<int:pk>/', AddProductInCartView.as_view(), name='add_product_in_cart'),
+    path('cart/', ProductsInCartListView.as_view(), name='cart'),
+    path('cart/delete/product_in_cart/<int:pk>/', DeleteProductInCartView.as_view(), name='delete_product_in_cart'),
 ]

@@ -2,8 +2,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, View
 
-from webapp.forms import ProductForm, SearchForm, ProductInCartForm
+from webapp.forms import ProductForm, SearchForm
 from webapp.models import Product, Category, ProductInCart
+
+
+class ProductsInCartListView(ListView):
+    model = ProductInCart
+    template_name = 'product/products_in_cart_list.html'
+    context_object_name = 'products_in_cart'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        total = 0
+        for product_in_cart in ProductInCart.objects.all():
+            total += product_in_cart.product.price * product_in_cart.quantity
+        context['total'] = total
+        return context
 
 
 class AddProductInCartView(View):
@@ -23,4 +37,11 @@ class AddProductInCartView(View):
             else:
                 return redirect('products')
 
+
+class DeleteProductInCartView(View):
+
+    def get(self, request, *args, **kwargs):
+        product_in_cart = get_object_or_404(ProductInCart, pk=kwargs.get('pk'))
+        product_in_cart.delete()
+        return redirect('cart')
 

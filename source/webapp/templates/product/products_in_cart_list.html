@@ -1,0 +1,51 @@
+{#{% extends 'base.html' %}#}
+{#{% block products %}#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    {% if category %}#}
+{#        {% include 'partial/products_list.html' with title=category.name %}#}
+{#    {% else %}#}
+{#        {% include 'partial/products_list.html' with title='Продукты' %}#}
+{#    {% endif %} #}
+{#{% endblock %}#}
+
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block products %}
+{% endblock %}
+
+{% block content %}
+
+
+    <h3 class="mb-3">Корзина</h3>
+
+    <table class="table mb-3">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Товар</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Сумма</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product_in_cart in products_in_cart %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ product_in_cart.product.name }}</td>
+                <td>{{ product_in_cart.product.price }}</td>
+                <td>{{ product_in_cart.quantity }}</td>
+                <td>{{ product_in_cart.product.price|mul:product_in_cart.quantity }}</td>
+                <td><a href="{% url 'delete_product_in_cart' product_in_cart.pk %}" class="btn btn-danger">
+                    <i class="bi bi-cart-dash"></i></a></td>
+            </tr>
+            {% empty %}
+            <p>Корзина пуста</p>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Итого: {{ total }}</h3>
+{% endblock %}
